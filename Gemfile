@@ -8,6 +8,7 @@ gem 'rails', '4.0.0'
 
 gem "haml-rails", "~> 0.4"
 gem 'html2haml'
+gem 'erb2haml'
 
 
 # Use sqlite3 as the database for Active Record
@@ -25,6 +26,7 @@ group :test do
 end
 
 gem 'devise'
+gem 'cancan'
 
 gem 'binding_of_caller'
 
