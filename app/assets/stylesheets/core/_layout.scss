@@ -1,0 +1,33 @@
+//   Layout
+
+*, *:before, *:after {
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+}
+
+//   Header
+
+
+//   Main-Content
+
+.container {
+padding-right: 15px;
+padding-left: 15px;
+margin-right: auto;
+margin-left: auto;
+}
+
+.container:before, .container:after {
+display: table;
+content: " ";
+}
+
+.container:after {
+clear: both;
+}
+
+//   Footer
+
+
+//   States
