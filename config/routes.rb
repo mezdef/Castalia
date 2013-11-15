@@ -1,8 +1,13 @@
 Castalia::Application.routes.draw do
   devise_for :users, :path_names => {:sign_in => "login", :sign_out => "logout"}, :path => "d"
-  resources :users
-  get "about/index"
+  resources :users do
+    get :new
+  end
   # root :to => "home#index"
+  resource :pages do
+    get :about
+  end
+  root :to => "pages#home"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
