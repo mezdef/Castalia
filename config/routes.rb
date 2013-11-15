@@ -3,7 +3,12 @@ Castalia::Application.routes.draw do
   resources :users do
     get :new
   end
-  # root :to => "home#index"
+
+  namespace :admin do
+    get :index
+    resources :users
+  end
+
   resource :pages do
     get :about
   end
