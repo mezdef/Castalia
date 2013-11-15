@@ -6,8 +6,34 @@
 box-sizing: border-box;
 }
 
+body{
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
 //   Header
 
+.header {
+margin-bottom: 30px;
+}
+.header, .marketing, .footer {
+padding-left: 0;
+padding-right: 0;
+}
+
+.header {
+border-bottom: 1px solid #e5e5e5;
+}
+
+.header h3 {
+margin-top: 0;
+margin-bottom: 0;
+line-height: 40px;
+padding-bottom: 19px;
+}
+.text-muted {
+color: #999999;
+}
 
 //   Main-Content
 
@@ -16,6 +42,7 @@ padding-right: 15px;
 padding-left: 15px;
 margin-right: auto;
 margin-left: auto;
+width: 750px;
 }
 
 .container:before, .container:after {
@@ -31,3 +58,7 @@ clear: both;
 
 
 //   States
+
+.pull-right {
+float: right !important;
+}

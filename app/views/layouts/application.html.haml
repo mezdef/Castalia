@@ -3,11 +3,9 @@
   %head
     = render 'layouts/head'
   %body
-    = render 'layouts/banner'
     .container
+      = render 'layouts/banner'
       - flash.each do |name, msg|
         = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
-      - if user_signed_in?
-        = link_to('Logout', destroy_user_session_path, :method=>'delete')
       = yield
-    = render 'layouts/footer'
+      = render 'layouts/footer'

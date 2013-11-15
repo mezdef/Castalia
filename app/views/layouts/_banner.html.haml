@@ -1,9 +1,11 @@
-%header.navbar.navbar-fixed-top.navbar-inverse
-  .navbar-inner
-    .container
-      =link_to "Tilba Lake Community", '/', id: "logo"
-      -# %nav
-      -#   %ul.nav.pull-right
-      -#     %li= link_to "Home",    '#'
-      -#     %li= link_to "Help",    '#'
-          %li= link_to "Sign in", '#'
+%header.header
+  %ul.nav.nav-pills.pull-right
+    %li About
+    %li Calendar
+    %li Members
+    %li Documents
+    - if user_signed_in?
+      %li
+        = link_to('Logout', destroy_user_session_path, :method=>'delete')
+  %h3
+    =link_to "Tilba Lake Community", '/', id: "logo"
