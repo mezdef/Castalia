@@ -1,32 +1,20 @@
--# - title 'User Management'
--# = render 'admin_menu'
--# .span9
--#   %h2 Administer the HCS vLab system
-  -# = render 'display_licence_collections'
--# = render 'shared/nectar_attribution'
 %table.table.table-condensed
   %thead
     %tr
       %th.email Email
-      %th
-        First name
-      %th
-        Last name
       %th.role Role
       %th.status Status
-      %th.date
-        Last signed in
-      %th.actions
+      %th.date Last signed in
 
   %tbody
-    - @users.each do |user|
+    - @user.each do |user|
       %tr
-        %td.email{:title => user.email}= link_to user.email, user, :id => "view_#{user.id}"
+        %td.email{:title => user.email}= link_to user.email, [:admin, user], :id => "view_#{user.id}"
         -# %td.name{:title => user.first_name}= user.first_name
         -# %td.name{:title => user.last_name}= user.last_name
         -# %td.role= user.role.name if user.role
         -# %td.status= user.status_description
-        -# %td.date
+        %td.date
           - if user.last_sign_in_at.nil?
             Never logged in
           - else

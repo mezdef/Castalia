@@ -1,0 +1,13 @@
+%h2 User details for #{@user.email}
+.form-horizontal
+  .form-group
+    %label.control-label.col-sm-2 Email
+    .col-sm-10.text
+      = @user.email
+  .form-group
+    %label.control-label.col-sm-2 Last login
+    .col-sm-10.text
+      - if @user.last_sign_in_at.nil?
+        Never logged in
+      - else
+        = @user.last_sign_in_at.localtime.strftime("%d/%m/%Y %I:%M%p")
