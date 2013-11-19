@@ -1,13 +1,15 @@
 Castalia::Application.routes.draw do
-  devise_for :users, :path_names => {:sign_in => "login", :sign_out => "logout"}, :path => "d"
+  devise_for :users, :path_names => {:sign_in => "login", :sign_out => "logout"}
+
   resources :users do
     get :new
+    # get :edit
   end
 
-  namespace :admin do
-    get :index
-    resources :users
-  end
+  # namespace :admin do
+  #   get :index
+  #   resources :users
+  # end
 
   resource :pages do
     get :about

@@ -5,6 +5,11 @@
     = f.label :email
     = f.email_field :email, :class => "form-control", :placeholder => "Email address", :autofocus => true
   .form-group
+    = f.label :first_name, "First name", :class => "control-label col-sm-2"
+    .col-sm-10.text
+      = f.text_field :first_name, :autofocus => true
+  %div
+  .form-group
     = f.label :password
     = f.password_field :password, :class => "form-control", :placeholder => "Password"
   .form-group
