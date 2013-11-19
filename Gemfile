@@ -27,6 +27,7 @@ end
 
 gem 'devise'
 gem 'cancan'
+gem 'rolify'
 
 gem 'binding_of_caller'
 
