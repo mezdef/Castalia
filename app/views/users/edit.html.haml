@@ -20,6 +20,16 @@
     .col-sm-10.text
       = f.text_field :last_name, :class => "form-control"
 
+  .form-group
+    = f.label :contact, "Contact number", :class => "control-label col-sm-2"
+    .col-sm-10.text
+      = f.text_field :contact, :class => "form-control"
+
+  .form-group
+    = f.label :location, "Location", :class => "control-label col-sm-2"
+    .col-sm-10.text
+      = f.text_field :location, :class => "form-control"
+
   -# .form-group
   -#   = f.label :password, "New Password", :class => "control-label col-sm-2"
   -#   .col-sm-10.text
@@ -38,7 +48,8 @@
       %i (we need your current password to confirm your changes)
 
   .form-group
-    = f.submit "Update", :class => "btn btn-primary"
+    .col-sm-offset-2.col-sm-10
+      = f.submit "Update", :class => "btn btn-primary"
 
 -# %h3 Cancel my account
 -# %p

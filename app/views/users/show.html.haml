@@ -1,5 +1,6 @@
-%h2 User details for #{@user.email}
 .form-horizontal
+  .col-sm-offset-2.col-sm-10
+    %h2 User details for #{@user.email}
   .form-group
     %label.control-label.col-sm-2 Email
     .col-sm-10.text
@@ -13,6 +14,14 @@
     .col-sm-10.text
       = @user.last_name
   .form-group
+    %label.control-label.col-sm-2 Contact number
+    .col-sm-10.text
+      = @user.contact
+  .form-group
+    %label.control-label.col-sm-2 Location
+    .col-sm-10.text
+      = @user.location
+  .form-group
     %label.control-label.col-sm-2 role
     .col-sm-10.text
       = @user.role
@@ -25,4 +34,5 @@
         = @user.last_sign_in_at.localtime.strftime("%d/%m/%Y %I:%M%p")
 
   .form-group
-    = link_to "Edit details", edit_user_path, :id => "view_#{@user.id}"
+    .col-sm-offset-2.col-sm-10
+      = link_to "Edit details", edit_user_path, :id => "view_#{@user.id}", :class => "btn btn-primary"
