@@ -6,6 +6,7 @@
     .container
       = render 'layouts/banner'
       - flash.each do |name, msg|
-        = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
+        .alert.alert-info
+          = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
       = yield
       = render 'layouts/footer'
