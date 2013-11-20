@@ -1,14 +1,18 @@
 %header.header
   %ul.nav.nav-pills.pull-right
     - if user_signed_in?
-      %li About
-      %li Calendar
-      %li Members
-      %li Documents
-      %li
-        = link_to 'Admin', admin_users_path
-    - if user_signed_in?
+      %li.disabled
+        = link_to 'About', '#', :class => "disabled"
+      %li.disabled
+        = link_to 'Calendar', '#', :class => "disabled"
+      %li{ :class => activepath_fuzzy?(users_path) }
+        = link_to 'Members', users_path
       %li
         = link_to('Logout', destroy_user_session_path, :method=>'delete')
+    - else
+      %li{ :class => activepath?(root_path) }
+        = link_to 'Login', root_path
+      %li{ :class => activepath?(new_user_path) }
+        = link_to 'Request account', new_user_path
   %h3
     =link_to "Tilba Lake Community", '/', id: "logo"
