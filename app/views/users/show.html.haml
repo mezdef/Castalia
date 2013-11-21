@@ -1,6 +1,7 @@
 .form-horizontal
-  .col-sm-offset-2.col-sm-10
-    %h2 User details for #{@user.email}
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      %h2 User details for #{@user.email}
   .form-group
     %label.control-label.col-sm-2 Email
     .col-sm-10.text
@@ -22,9 +23,13 @@
     .col-sm-10.text
       = @user.location
   .form-group
-    %label.control-label.col-sm-2 role
+    %label.control-label.col-sm-2 Role
     .col-sm-10.text
       = @user.role
+  .form-group
+    %label.control-label.col-sm-2 Status
+    .col-sm-10.text
+      = @user.status
   .form-group
     %label.control-label.col-sm-2 Last login
     .col-sm-10.text

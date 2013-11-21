@@ -9,18 +9,6 @@ module ApplicationHelper
     end
   end
 
-  def resource_name
-    :user
-  end
-
-  def resource
-    @resource ||= User.new
-  end
-
-  def devise_mapping
-    @devise_mapping ||= Devise.mappings[:user]
-  end
-
   # helper class for tabs, adds 'active' class when on the input path
   def activepath?(test_path)
     return 'active' if (request.path == test_path)

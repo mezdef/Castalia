@@ -1,6 +1,7 @@
-%h2
-  Edit #{resource_name.to_s.humanize}
-= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => "form-horizontal" }) do |f|
+= form_for @user, :url => user_path do |f|
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      -# %h2 Edit #{ @user.email }
   = devise_error_messages!
   -# %div
   -#   = f.label :email
@@ -30,6 +31,11 @@
     .col-sm-10.text
       = f.text_field :location, :class => "form-control"
 
+  .form-group
+    = f.label :status, "Status", :class => "control-label col-sm-2"
+    .col-sm-10.text
+      = f.select :status, options_for_select([["Select One", ""], "pending", "approved"]), :class => "form-control"
+
   -# .form-group
   -#   = f.label :password, "New Password", :class => "control-label col-sm-2"
   -#   .col-sm-10.text
@@ -55,3 +61,5 @@
 -# %p
 -#   Unhappy? #{button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}
 -# = link_to "Back", :back
+- if can? :update, @user
+  = link_to "Edit", root_path

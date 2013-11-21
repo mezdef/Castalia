@@ -31,8 +31,16 @@ class Ability
     # if user.has_role? :admin
     #   can :manage, :all
     # else
-    #   can :manage, :all
-    #   # can :read, :all
+    #   # can :manage, :all
+    #   can :read, :all
     # end
+
+    if user.has_role? :admin
+      can :access, :all
+    elsif user.has_role? :moderator
+      can [:index, :read, :update, :destroy], :users, :user_id => user.id
+      cannot :access, :users, [:role_ids]
+    end
+
   end
 end

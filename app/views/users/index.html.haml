@@ -2,19 +2,35 @@
   %thead
     %tr
       %th.email Email
+      %th.role Role
+      %th.status Status
+
+  %tbody
+    - @pendinguser.each do |user|
+      %tr
+        %td.email{:title => user.email}= link_to user.email, user, :id => "view_#{user.id}"
+        %td.name{:title => user.role}= user.role
+        %td.name{:title => user.status}= user.status
+
+%table.table.table-condensed
+  %thead
+    %tr
+      %th.email Email
       %th.email Fist name
       %th.email Last name
       %th.role Role
       %th.date Last signed in
 
   %tbody
-    - @user.each do |user|
+    - @approveduser.each do |user|
       %tr
         %td.email{:title => user.email}= link_to user.email, user, :id => "view_#{user.id}"
         %td.name{:title => user.first_name}= user.first_name
         %td.name{:title => user.last_name}= user.last_name
-        %td.name{:title => user.role}= user.role
-        -# %td.name{:title => user.role}= user.ability
+        - if user.has_role? :admin
+          %td.name{:title => user.role} Admin
+        - else
+          %td.name{:title => user.role} User
         %td.date
           - if user.last_sign_in_at.nil?
             Never logged in
