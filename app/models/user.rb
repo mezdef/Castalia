@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   end 
 
   def inactive_message 
-    if status? == "pending"
+    if status == "pending"
       :not_approved 
     else 
       super # Use whatever other message 
