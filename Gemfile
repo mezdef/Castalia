@@ -25,6 +25,8 @@ group :test do
   gem 'capybara', '2.1.0'
 end
 
+gem 'simple_form'
+
 gem 'devise'
 gem 'cancan'
 gem 'rolify'
