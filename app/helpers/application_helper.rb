@@ -9,6 +9,19 @@ module ApplicationHelper
     end
   end
 
+  # Resource helpers for devise
+  def resource_name
+    :user
+  end
+
+  def resource
+    @resource ||= User.new
+  end
+
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:user]
+  end
+
   # helper class for tabs, adds 'active' class when on the input path
   def activepath?(test_path)
     return 'active' if (request.path == test_path)
@@ -20,8 +33,17 @@ module ApplicationHelper
     Array(test_path).each do |param|
       isActive = isActive || request.path.include?(param)
     end
-
     return 'active' if isActive
+  end
+
+  # Flash message helpers
+  def flash_class(level)
+    case level
+    when :notice then "alert alert-info"
+    when :success then "alert alert-success"
+    when :error then "alert alert-danger"
+    when :alert then "alert alert-warning"
+    end
   end
 
 end
