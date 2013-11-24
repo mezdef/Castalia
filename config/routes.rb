@@ -1,6 +1,6 @@
 Castalia::Application.routes.draw do
 
-  devise_for :users, :controllers  => { :registrations => 'users/registrations' }
+  devise_for :users, :controllers  => { :registrations => 'users/registrations', :passwords => 'users/passwords' }
 
   root :to => "pages#home"
 
