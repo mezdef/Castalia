@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
+  rolify
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  rolify
   # resourcify
 
   def active_for_authentication? 
@@ -16,5 +16,5 @@ class User < ActiveRecord::Base
     end 
   end
 
-
+  validates :email, :uniqueness => true
 end

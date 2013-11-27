@@ -1,65 +1,63 @@
-= form_for @user, :url => user_path do |f|
+= form_for @user, :html => { :class => "form-horizontal"} do |f|
   .form-group
     .col-sm-offset-2.col-sm-10
-      -# %h2 Edit #{ @user.email }
+      - if current_user.id == @user.id
+        %h2 Editing my account details
+      - else
+        %h2 Edititing #{@user.email}
   = devise_error_messages!
-  -# %div
-  -#   = f.label :email
-  -#   %br/
-  -#   = f.email_field :email, :autofocus => true
-  -# - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-  -#   %div
-  -#     Currently waiting confirmation for: #{resource.unconfirmed_email}
+
+  - if can? :manage, User
+    .form-group
+      = f.label :email, "Email", :class => "control-label col-sm-2"
+      .col-sm-10
+        = f.email_field :email, :placeholder => "name@domain.com", :class => "form-control"
 
   .form-group
     = f.label :first_name, "First name", :class => "control-label col-sm-2"
-    .col-sm-10.text
-      = f.text_field :first_name, :autofocus => true, :class => "form-control"
+    .col-sm-10
+      = f.text_field :first_name, :placeholder => "First", :autofocus => true, :class => "form-control"
 
   .form-group
     = f.label :last_name, "Last name", :class => "control-label col-sm-2"
-    .col-sm-10.text
-      = f.text_field :last_name, :class => "form-control"
+    .col-sm-10
+      = f.text_field :last_name, :placeholder => "Last", :class => "form-control"
 
   .form-group
     = f.label :contact, "Contact number", :class => "control-label col-sm-2"
-    .col-sm-10.text
-      = f.text_field :contact, :class => "form-control"
+    .col-sm-10
+      = f.text_field :contact, :placeholder => "0000 000 000", :class => "form-control"
 
   .form-group
     = f.label :location, "Location", :class => "control-label col-sm-2"
-    .col-sm-10.text
-      = f.text_field :location, :class => "form-control"
+    .col-sm-10
+      = f.text_field :location, :placeholder => "City of residence", :class => "form-control"
 
-  .form-group
-    = f.label :status, "Status", :class => "control-label col-sm-2"
-    .col-sm-10.text
-      = f.select :status, options_for_select([["Select One", ""], "pending", "approved"]), :class => "form-control"
+  - if can? :manage, User
+    .form-group
+      = f.label :status, "Status", :class => "control-label col-sm-2"
+      .col-sm-10
+        = f.select( :status, ["pending", "approved"], {}, { :class => "form-control" })
+
+  - if can? :manage, User
+    .form-group
+      = f.label :role, "Role", :class => "control-label col-sm-2"
+      .col-sm-10
+        - Role.all.each do |role|
+          = check_box_tag "user[role_ids][]", role.id, @user.role_ids.include?(role.id)
+          = role.name
 
   -# .form-group
-  -#   = f.label :password, "New Password", :class => "control-label col-sm-2"
+  -#   = f.label :current_password, :class => "control-label col-sm-2"
   -#   .col-sm-10.text
-  -#     = f.password_field :password, :class => "form-control"
-  -#     %i (leave blank if you don't want to change it)
-
-  -# .form-group
-  -#   = f.label :password_confirmation, :class => "control-label col-sm-2"
-  -#   .col-sm-10.text
-  -#     = f.password_field :password_confirmation, :class => "form-control"
+  -#     = f.password_field :current_password, :class => "form-control"
+  -#     %i (we need your current password to confirm your changes)
 
   .form-group
-    = f.label :current_password, :class => "control-label col-sm-2"
-    .col-sm-10.text
-      = f.password_field :current_password, :class => "form-control"
-      %i (we need your current password to confirm your changes)
-
-  .form-group
-    .col-sm-offset-2.col-sm-10
+    .col-sm-2
+      = link_to "Back", :back, :class => "btn btn-default pull-right"
+    .col-sm-10
       = f.submit "Update", :class => "btn btn-primary"
+      - if can? :manage, User
+        = link_to 'Delete', user_path(@user), :method => 'delete', :class => "btn btn-danger pull-right", :confirm => 'Are you sure?'
 
--# %h3 Cancel my account
--# %p
--#   Unhappy? #{button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}
--# = link_to "Back", :back
-- if can? :update, @user
-  = link_to "Edit", root_path

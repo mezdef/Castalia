@@ -1,7 +1,10 @@
 .form-horizontal
   .form-group
     .col-sm-offset-2.col-sm-10
-      %h2 User details for #{@user.email}
+      - if current_user.id == @user.id
+        %h2 My account details
+      - else
+        %h2 User details for #{@user.email}
   .form-group
     %label.control-label.col-sm-2 Email
     .col-sm-10.text
@@ -25,11 +28,11 @@
   .form-group
     %label.control-label.col-sm-2 Role
     .col-sm-10.text
-      = @user.role
+      = @user.roles.map { |c| c.name }.sort.join(', ')
   .form-group
     %label.control-label.col-sm-2 Status
     .col-sm-10.text
-      = @user.status
+      = @user.status.camelize
   .form-group
     %label.control-label.col-sm-2 Last login
     .col-sm-10.text
@@ -39,5 +42,8 @@
         = @user.last_sign_in_at.localtime.strftime("%d/%m/%Y %I:%M%p")
 
   .form-group
-    .col-sm-offset-2.col-sm-10
-      = link_to "Edit details", edit_user_path, :id => "view_#{@user.id}", :class => "btn btn-primary"
+    .col-sm-2
+      = link_to "Back", session[:last_page], :class => "btn btn-default pull-right"
+    .col-sm-10
+      - if current_user.has_role? :admin || current_user.id == @user.id
+        = link_to "Edit details", edit_user_path, :id => "view_#{@user.id}", :class => "btn btn-primary"
