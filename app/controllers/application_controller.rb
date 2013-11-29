@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
 
   before_action :authenticate_user!
   # before_filter :configure_devise_params, if: :devise_controller?
-  before_filter :last_page
 
   # def configure_devise_params
   #   devise_parameter_sanitizer.for(:sign_up) do |u|
@@ -19,12 +18,6 @@ class ApplicationController < ActionController::Base
  
   private
  
-  def last_page
-    session[:last_page] = request.env['HTTP_REFERER']
-    #raise session[:last_page].inspect
-  end
- 
-
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to main_app.root_url, :alert => exception.message
   end

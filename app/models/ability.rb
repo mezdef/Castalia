@@ -8,8 +8,11 @@ class Ability
     end
     if user.has_role? :user
       can [:read, :update], User do |account|
-        account.try(:)email == user.email
+        account.email == user.email
       end
+    end
+    if user.role.nil?
+      can :read, :new
     end
   end
 
