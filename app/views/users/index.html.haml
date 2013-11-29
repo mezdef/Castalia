@@ -1,17 +1,18 @@
-- if @pendinguser.any?
-  %table.table.table-condensed
-    %thead
-      %tr
-        %th.email Email
-        %th.role Role
-        %th.status Status
-
-    %tbody
-      - @pendinguser.each do |user|
+- if current_user.has_role? :admin
+  - if @pendinguser.any?
+    %table.table.table-condensed
+      %thead
         %tr
-          %td.email{:title => user.email}= link_to user.email, user, :id => "view_#{user.id}"
-          %td.name{:title => user.role}= user.role
-          %td.name{:title => user.status}= user.status.humanize
+          %th.email Email
+          %th.role Role
+          %th.status Status
+
+      %tbody
+        - @pendinguser.each do |user|
+          %tr
+            %td.email{:title => user.email}= link_to user.email, user, :id => "view_#{user.id}"
+            %td.name{:title => user.role}= user.role
+            %td.name{:title => user.status}= user.status.humanize
 
 %table.table.table-condensed
   %thead
