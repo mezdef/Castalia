@@ -16,5 +16,12 @@ class User < ActiveRecord::Base
     end 
   end
 
+
+  after_create :account_requested
+  def account_requested
+    UserMailer.account_requested(self).deliver
+    UserMailer.account_requested_admin(self).deliver
+  end
+
   validates :email, :uniqueness => true
 end
