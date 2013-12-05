@@ -4,19 +4,21 @@
       - if current_user.id == @user.id
         %h2 My account details
       - else
-        %h2 User details for #{@user.email}
+        %h2 #{@user.first_name} #{@user.last_name}
   .form-group
     %label.control-label.col-sm-2 Email
     .col-sm-10.text
       = @user.email
-  .form-group
-    %label.control-label.col-sm-2 First name
-    .col-sm-10.text
-      = @user.first_name
-  .form-group
-    %label.control-label.col-sm-2 Last name
-    .col-sm-10.text
-      = @user.last_name
+  - if current_user.id == @user.id
+    .form-group
+      %label.control-label.col-sm-2 First name
+      .col-sm-10.text
+        = @user.first_name
+  - if current_user.id == @user.id
+    .form-group
+      %label.control-label.col-sm-2 Last name
+      .col-sm-10.text
+        = @user.last_name
   .form-group
     %label.control-label.col-sm-2 Contact number
     .col-sm-10.text
@@ -28,11 +30,11 @@
   .form-group
     %label.control-label.col-sm-2 Role
     .col-sm-10.text
-      = @user.roles.map { |c| c.name }.sort.join(', ')
+      = @user.roles.map { |c| c.name }.sort.join(', ').humanize
   .form-group
     %label.control-label.col-sm-2 Status
     .col-sm-10.text
-      = @user.status.camelize
+      = @user.status.humanize
   .form-group
     %label.control-label.col-sm-2 Last login
     .col-sm-10.text
