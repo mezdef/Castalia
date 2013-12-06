@@ -1,8 +1,8 @@
 %header.header
   %ul.nav.nav-pills.pull-right
     - if user_signed_in?
-      %li.disabled
-        = link_to 'About', '#', :class => "disabled"
+      %li{ :class => activepath?(about_path) }
+        = link_to 'About', about_path
       %li.disabled
         = link_to 'Calendar', '#', :class => "disabled"
       %li{ :class => activepath_fuzzy?(users_path) }

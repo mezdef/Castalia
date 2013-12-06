@@ -1,3 +1,6 @@
--provide(:title, 'About')
-%h1 About#index
-%p Find me in app/views/about/index.html.haml
+- @about.each do |about|
+  %section
+    %h2 #{about.title}
+    %h4 #{about.category}
+    .content
+      #{about.content}
