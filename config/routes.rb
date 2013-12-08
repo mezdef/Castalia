@@ -1,5 +1,8 @@
 Castalia::Application.routes.draw do
 
+  mount Mercury::Engine => '/'
+  Mercury::Engine.routes
+
   devise_for :users, :controllers  => { :registrations => 'users/registrations', :passwords => 'users/passwords' }
 
   root :to => "pages#home"
@@ -11,6 +14,7 @@ Castalia::Application.routes.draw do
   resources :users
   
   get 'about', to: 'about#index', as: :about
+  post 'about/mercury_update', to: 'about#mercury_update', as: :mercury_update_about
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

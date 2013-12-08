@@ -1,6 +1,10 @@
 - @about.each do |about|
-  %section
-    %h2 #{about.title}
+  %section{ :id => 'about_' + "#{about.id}"}
+    %h2#about_title{"data-mercury" => "full"}
+      #{about.title}
     %h4 #{about.category}
     .content
       #{about.content}
+= link_to "Edit Page", "/editor" + request.path, { :id => "edit_link", "data-save-url" => "/about/mercury_update"}
+:javascript
+  parent.Mercury.on('ready', function() { Mercury.saveUrl = '/about/mercury_update'; });

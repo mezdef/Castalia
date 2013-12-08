@@ -31,6 +31,9 @@ gem 'devise'
 gem 'cancan'
 gem 'rolify'
 
+gem 'mercury-rails', github: 'jejacks0n/mercury'
+gem 'jquery-migrate-rails'
+
 gem 'binding_of_caller'
 
 # Use SCSS for stylesheets
@@ -47,8 +50,8 @@ gem 'coffee-rails', '4.0.0'
 # gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
-# gem 'jquery-rails'
-gem 'jquery-rails', '2.2.1'
+gem 'jquery-rails'
+# gem 'jquery-rails', '2.2.1'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 # gem 'turbolinks'
