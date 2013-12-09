@@ -1,6 +1,6 @@
 - @about.each do |about|
   %section{ :id => 'about_' + "#{about.id}"}
-    %h2#about_title{"data-mercury" => "full"}
+    %h2{:id => "about_title_" + "#{about.id}", "data-mercury" => "full"}
       #{about.title}
     %h4 #{about.category}
     .content
