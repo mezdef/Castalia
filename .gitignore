@@ -24,3 +24,13 @@ doc/
 .DS_Store
 .idea
 .secret
+public/assets/application-19b5359dec8cb88cf2479f88ed6ca11c.js
+public/assets/application-f8eaa62523b304441044619edf214080.css
+public/assets/glyphicons-halflings-regular-0f4a7be6dc74b926e8120a545f8b96ea.eot
+public/assets/glyphicons-halflings-regular-5eefd964cf689e3315d8c9459714e4cd.svg
+public/assets/glyphicons-halflings-regular-b8371b58529b77f0818e5d721a7a5624.ttf
+public/assets/glyphicons-halflings-regular-cf24e42fad297dbaa33853187ba876e7.woff
+public/assets/manifest-537fc4cfa2a92142191256d6ed028d14.json
+
+# Ignore application configuration
+/config/application.yml
