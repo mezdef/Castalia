@@ -3,6 +3,15 @@ class AboutController < ApplicationController
   def index
     @about = Text.all
   end
+
+  def update
+    @about = Text.first
+    if @about.update(params[:text].permit(:document))
+      redirect_to about_path
+    else
+      redirect_to root_path
+    end
+  end
   
   def mercury_update
     # Update page

@@ -12,8 +12,10 @@ Castalia::Application.routes.draw do
   end
 
   resources :users
+  resource :about, controller: :about, except: :show do
+    get :index
+  end
   
-  get 'about', to: 'about#index', as: :about
   post 'about/mercury_update', to: 'about#mercury_update', as: :mercury_update_about
 
   # The priority is based upon order of creation: first created -> highest priority.

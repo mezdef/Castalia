@@ -33,6 +33,7 @@ gem 'rolify'
 
 gem 'mercury-rails', github: 'jejacks0n/mercury'
 gem 'jquery-migrate-rails'
+gem "paperclip"
 
 gem 'binding_of_caller'
 

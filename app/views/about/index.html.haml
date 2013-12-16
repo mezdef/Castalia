@@ -5,6 +5,10 @@
     %h4 #{about.category}
     .content
       #{about.content}
+    = image_tag about.document.url
+    = form_for about, :url => about_path, :html => { :multipart => true } do |form|
+      = form.file_field :document
+      = form.submit "Update", :class => "btn btn-primary"
 = link_to "Edit Page", "/editor" + request.path, { :id => "edit_link", "data-save-url" => "/about/mercury_update"}
 :javascript
   parent.Mercury.on('ready', function() { Mercury.saveUrl = '/about/mercury_update'; });
