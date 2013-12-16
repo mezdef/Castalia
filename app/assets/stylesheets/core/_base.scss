@@ -310,10 +310,22 @@ line-height: 1.33;
 border-radius: 6px;
 }
 
+.btn-default {
+color: #444;
+background-color: #EEE;
+border-color: #EEE;
+}
+
 .btn-primary {
 color: #ffffff;
-background-color: #9A6A80;
-border-color: #9A6A80;
+background-color: #364461;
+border-color: #364461;
+}
+
+.btn-danger {
+color: #fff;
+background-color: #D37982;
+border-color: #D37982;
 }
 
 // INPUTS //////////////////////////////////////////////////////////////////////////////////////////
@@ -633,7 +645,7 @@ background-color: transparent;
 
 .nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
 color: #fff;
-background-color: #43566B;
+background-color: #364461;
 }
 
 // ALERTS //////////////////////////////////////////////////////////////////////////////////////////

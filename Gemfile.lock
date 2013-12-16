@@ -77,6 +77,9 @@ GEM
     execjs (1.4.0)
       multi_json (~> 1.0)
     ffi (1.9.0)
+    figaro (0.7.0)
+      bundler (~> 1.0)
+      rails (>= 3, < 5)
     haml (4.0.3)
       tilt
     haml-rails (0.4)
@@ -212,6 +215,7 @@ DEPENDENCIES
   coffee-rails (= 4.0.0)
   devise
   erb2haml
+  figaro
   haml-rails (~> 0.4)
   html2haml
   jbuilder (= 1.0.2)

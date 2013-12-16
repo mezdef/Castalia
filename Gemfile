@@ -31,6 +31,8 @@ gem 'devise'
 gem 'cancan'
 gem 'rolify'
 
+gem 'figaro'
+
 gem 'mercury-rails', github: 'jejacks0n/mercury'
 gem 'jquery-migrate-rails'
 gem "paperclip"
