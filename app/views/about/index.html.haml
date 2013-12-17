@@ -5,7 +5,27 @@
     %h4 #{about.category}
     .content
       #{about.content}
-    = image_tag about.document.url
+    -# = image_tag about.document.url
+    -# - about.document.each do |asset|
+    %table.table.table-condensed
+      %thead
+        %tr
+          %th.file Name
+          %th.type File type
+          %th.size File size
+          %th.date Uploaded at
+
+      %tbody
+        -# - @approveduser.each do |user|
+        %tr
+          %td.file{:title => about.document_file_name}
+            %span.glyphicon{ :class => filetype_icon(about.document_content_type) }
+            -# %span.glyphicon.glyphicon-file
+            = link_to about.document_file_name, about.document.url(:original)
+          %td.type{:title => about.document_content_type}= about.document_content_type
+          %td.size{:title => about.document_file_size}= number_to_human_size(about.document_file_size)
+          %td.date{:title => about.document_updated_at}= about.document_updated_at
+
     = form_for about, :url => about_path, :html => { :multipart => true } do |form|
       = form.file_field :document
       = form.submit "Update", :class => "btn btn-primary"

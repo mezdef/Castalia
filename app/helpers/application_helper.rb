@@ -46,4 +46,9 @@ module ApplicationHelper
     end
   end
 
+  # Paperclip file type icons
+  def filetype_icon(filetype)
+    return 'glyphicon-file' if filetype == 'application/pdf'
+  end
+
 end
