@@ -3,9 +3,10 @@
   %head
     = render 'layouts/head'
   %body
-    .container
-      = render 'layouts/banner'
+    = render 'layouts/banner'
+    %main.container
       - flash.each do |name, msg|
         = content_tag :div, msg, :id => "flash_#{name}", :class => "#{flash_class(name)}" if msg.is_a?(String)
+      = render 'aside'
       = yield
-      = render 'layouts/footer'
+    = render 'layouts/footer'
