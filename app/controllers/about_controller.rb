@@ -5,19 +5,26 @@ class AboutController < ApplicationController
   end
 
   def create
-    @about = Text.find(params[:text_id])
-    @asset = @about.assets.create(asset_params)
-    redirect_to about_path
-    if @asset.save
-      flash[:notice] = "Successfully uploaded #{@asset.name}"
+    if params[:text_id]
+      @about = Text.find(params[:text_id])
+      @asset = @about.assets.create(asset_params)
+      redirect_to about_path
+      if @asset.save
+        flash[:notice] = "Successfully uploaded #{@asset.name}"
+      else
+        flash[:warning] = "Failed to uploaded file."
+      end
     else
-      flash[:warning] = "Failed to uploaded file."
+      @text = Text.new
+      redirect_to about_path
+      if @text.save
+        flash[:notice] = "Created new about section."
+      else
+        flash[:warning] = "Failed to create new section."
+      end
     end
   end
 
-  def update
-  end
-  
   def mercury_update
     # Update page
     @about = Text.all
@@ -30,11 +37,18 @@ class AboutController < ApplicationController
 
   def destroy
     @text = Text.find(params[:text_id])
-    @asset = @text.assets.find(params[:asset_id])
-    @assetname = @asset.name
-    @asset.destroy
-    redirect_to about_path
-    flash[:notice] = "Successfully deleted #{@assetname}."
+    if params[:text_id]
+      @textname = @text.title
+      @text.destroy
+      redirect_to about_path
+      flash[:notice] = "Successfully deleted #{@textname}."
+    elsif params [:text_id, :asset_id]
+      @asset = @text.assets.find(params[:asset_id])
+      @assetname = @asset.name
+      @asset.destroy
+      redirect_to about_path
+      flash[:notice] = "Successfully deleted #{@assetname}."
+    end
   end
 
   private

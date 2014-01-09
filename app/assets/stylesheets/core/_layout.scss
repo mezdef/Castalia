@@ -40,7 +40,25 @@ color: #43566B;
 color: #999999;
 }
 
-//   Main-Content
+// ASIDE ///////////////////////////////////////////////////////////////////////////////////////////
+
+aside {
+  position: fixed;
+  width: 240px;
+  left: 50%;
+  margin-left: -640px;
+  text-align: right;
+}
+
+aside ul { margin: 0 0 20px 0; }
+
+aside ul li { list-style: none; }
+
+// ARTICLE /////////////////////////////////////////////////////////////////////////////////////////
+
+article { margin: 0 0 40px 0; }
+article h2 { margin: 0 0 10px 0; }
+article h2 small { font-size: 14px; }
 
 .container {
 padding-right: 15px;

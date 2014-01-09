@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131220000031) do
+ActiveRecord::Schema.define(version: 20140108223752) do
 
   create_table "assets", force: true do |t|
     t.string   "asset_file_name"
@@ -45,13 +45,9 @@ ActiveRecord::Schema.define(version: 20131220000031) do
   add_index "roles", ["name"], name: "index_roles_on_name"
 
   create_table "texts", force: true do |t|
-    t.string   "title"
-    t.string   "category"
-    t.text     "content"
-    t.string   "document_file_name"
-    t.string   "document_content_type"
-    t.integer  "document_file_size"
-    t.datetime "document_updated_at"
+    t.string "title",    default: "New About Section"
+    t.string "category"
+    t.text   "content",  default: "Section content area."
   end
 
   create_table "users", force: true do |t|

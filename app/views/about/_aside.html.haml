@@ -1,0 +1,9 @@
+%aside
+  %section
+    %ul
+      %li= link_to "", "/editor" + request.path, { id: 'edit_link', class: 'glyphicon glyphicon-pencil', 'data-save-url' => '/about/mercury_update'}
+      %li= link_to "", about_path, method: 'create', class: 'glyphicon glyphicon-plus-sign'
+  %nav
+    %ul
+      - @about.each do |text|
+        %li= link_to text.title, '#' + 'about_' + "#{text.id}"
