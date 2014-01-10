@@ -1,5 +1,7 @@
 class AboutController < ApplicationController
 
+  load_and_authorize_resource class: Text
+
   def index
     @about = Text.all
   end
@@ -14,7 +16,7 @@ class AboutController < ApplicationController
       else
         flash[:warning] = "Failed to uploaded file."
       end
-    else
+    elsif params[:text_new]
       @text = Text.new
       redirect_to about_path
       if @text.save
