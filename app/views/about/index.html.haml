@@ -31,9 +31,10 @@
               - if can? :manage, @about
                 %td.action
                   = link_to "", about_path(text_id: text, asset_id: asset), class: "glyphicon glyphicon-trash", method: 'delete', confirm: 'Are you sure you want to delete this file?'
-    = form_for text, url: about_path(text_id: text), method: 'create', html: { :multipart => true } do |form|
-      = form.file_field :asset
-      = form.submit "Update", class: 'btn btn-primary'
+    - if can? :manage, @about
+      = form_for text, url: about_path(text_id: text), method: 'create', html: { :multipart => true } do |form|
+        = form.file_field :asset
+        = form.submit "Update", class: 'btn btn-primary'
 
 :javascript
   parent.Mercury.on('ready', function() { Mercury.saveUrl = '/about/mercury_update'; });

@@ -1,3 +1,7 @@
 %aside
   %nav
-    %section Actions
+    %section
+      %ul
+        %li= link_to "Back", session[:last_page]
+        - if can? :update, @user
+          %li= link_to "Edit details", edit_user_path, :id => "view_#{@user.id}"

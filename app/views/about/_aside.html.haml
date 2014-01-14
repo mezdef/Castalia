@@ -1,9 +1,9 @@
 %aside
-  -# - if can? :manage, @about
-  %section
-    %ul
-      %li= link_to "", "/editor" + request.path, { id: 'edit_link', class: 'glyphicon glyphicon-pencil', 'data-save-url' => '/about/mercury_update'}
-      %li= link_to "", about_path(text_new: @about), method: 'create', class: 'glyphicon glyphicon-plus-sign'
+  - if can? :manage, @about
+    %section
+      %ul
+        %li= link_to "", "/editor" + request.path, { id: 'edit_link', class: 'glyphicon glyphicon-pencil', 'data-save-url' => '/about/mercury_update'}
+        %li= link_to "", about_path(text_new: @about), method: 'create', class: 'glyphicon glyphicon-plus-sign'
   %nav
     %ul
       - @about.each do |text|
