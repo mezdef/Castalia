@@ -11,10 +11,12 @@ body{
   padding-bottom: 20px;
 }
 
-//   Header
+// HEADER //////////////////////////////////////////////////////////////////////////////////////////
 
-.header {
-margin-bottom: 30px;
+header.header.container {
+  margin-bottom: 30px;
+  padding: 0;
+  width: 720px;
 }
 .header, .marketing, .footer {
 padding-left: 0;
