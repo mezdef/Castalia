@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+
+  has_and_belongs_to_many :events
+
   rolify
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -24,4 +27,9 @@ class User < ActiveRecord::Base
   end
 
   validates :email, :uniqueness => true
+
+
+  def name
+    first_name + ' ' + last_name
+  end
 end

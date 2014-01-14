@@ -10,11 +10,19 @@ Castalia::Application.routes.draw do
   namespace :users do
     get :resetpassword
   end
-
   resources :users
+
   resource :about, controller: :about, except: :show do
     get :index
   end
+
+  resource :calendar, as: :event, controller: :events do
+    get :index
+  end
+  # resource :calendar, as: :event, only: :index, controller: :events do
+  #   get :index
+  #   delete :index
+  # end
   
   post 'about/mercury_update', to: 'about#mercury_update', as: :mercury_update_about
 

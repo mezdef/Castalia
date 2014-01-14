@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140108223752) do
+ActiveRecord::Schema.define(version: 20140114033704) do
 
   create_table "assets", force: true do |t|
     t.string   "asset_file_name"
@@ -22,6 +22,18 @@ ActiveRecord::Schema.define(version: 20140108223752) do
     t.datetime "updated_at"
     t.integer  "attachable_id"
     t.string   "attachable_type"
+  end
+
+  create_table "events", force: true do |t|
+    t.string   "name"
+    t.string   "event_type", default: "Booking"
+    t.datetime "start"
+    t.datetime "finish"
+  end
+
+  create_table "events_users", force: true do |t|
+    t.integer "event_id"
+    t.integer "user_id"
   end
 
   create_table "mercury_images", force: true do |t|
@@ -70,6 +82,8 @@ ActiveRecord::Schema.define(version: 20140108223752) do
     t.string   "contact"
     t.string   "location"
     t.string   "status",                 default: "pending"
+    t.integer  "member_id"
+    t.string   "member_type"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

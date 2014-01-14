@@ -1,0 +1,22 @@
+= form_for :event, url: event_path, html: {:class => "form-signin"} do |f|
+
+  %h2 New Event
+  = devise_error_messages!
+
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control', :placeholder => "Event name", :autofocus => true
+
+  .form-group
+    = f.label :users
+    = collection_select :user, :member_id, User.all, :id, :name, {prompt: 'Add Users to event'}, {class: 'form-control'}
+
+  .form-group
+    = f.label :start
+    = f.date_select :start, class: 'form-control'
+
+  .form-group
+    = f.label :finish
+    = f.date_select :finish, class: 'form-control'
+
+  = f.submit "Create Event", class: 'btn btn-block btn-lg btn-primary'

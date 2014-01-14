@@ -3,8 +3,8 @@
     - if user_signed_in?
       %li{ :class => activepath?(about_path) }
         = link_to 'About', about_path
-      %li.disabled
-        = link_to 'Calendar', '#', :class => "disabled"
+      %li{class: activepath?(event_path)}
+        = link_to 'Calendar', event_path
       %li{ :class => activepath_fuzzy?(users_path) }
         = link_to 'Members', users_path
       %li
