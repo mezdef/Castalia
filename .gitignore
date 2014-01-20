@@ -34,3 +34,5 @@ public/assets/manifest-537fc4cfa2a92142191256d6ed028d14.json
 
 # Ignore application configuration
 /config/application.yml
+app/controllers/castalia.sublime-workspace
+app/controllers/castalia.sublime-project

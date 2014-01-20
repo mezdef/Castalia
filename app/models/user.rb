@@ -32,4 +32,9 @@ class User < ActiveRecord::Base
   def name
     first_name + ' ' + last_name
   end
+
+  def sig
+    first_name[0,1].upcase + '. ' + last_name.camelize
+  end
+
 end

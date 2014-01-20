@@ -5,4 +5,9 @@ class Event < ActiveRecord::Base
   def type
     event_type
   end
+
+  def length
+    ((((finish - start)/60)/60)/24).to_i
+  end
+
 end
