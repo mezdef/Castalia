@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20140114033704) do
     t.string   "event_type", default: "Booking"
     t.datetime "start"
     t.datetime "finish"
+    t.integer  "owner_id"
   end
 
   create_table "events_users", force: true do |t|

@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 
   has_and_belongs_to_many :events
+  has_many :events_owned, class_name: 'Event', foreign_key: 'owner_id'
 
   rolify
   devise :database_authenticatable, :registerable,

@@ -12,13 +12,12 @@ class EventsController < ApplicationController
   def create
     event = Event.new(event_params)
     users = User.find(params[:user][:member_id])
-    event.users << users
+    event.owner = current_user
+    event.users << users && event.users << current_user
     if event.save
-      redirect_to event_path
-      flash[:notice] = "Successfully created #{event.name}"
+      redirect_to event_path, notice: "Successfully created #{event.name}"
     else
-      redirect_to event_path
-      flash[:warning] = "Failed to create event."
+      redirect_to event_path warning: "Failed to create event."
     end
   end
 
@@ -27,11 +26,9 @@ class EventsController < ApplicationController
     @eventname = @event.name
     @event.destroy
     if @event.destroy
-      redirect_to event_path
-      flash[:notice] = "Successfully deleted #{@eventname}."
+      redirect_to event_path, notice: "Successfully deleted #{@eventname}."
     else
-      redirect_to event_path
-      flash[:warning] = "Failed to delete event."
+      redirect_to event_path warning: "Failed to delete event."
     end
 
   end
