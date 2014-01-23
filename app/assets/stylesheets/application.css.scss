@@ -2,7 +2,6 @@
 // Libraries
 
 @import "libs/normalize";
-@import "libs/grid";
 
 // @import "bootstrap";
 // @import "bootstrap-responsive";
@@ -17,6 +16,7 @@
 
 // Base - Base-level tags (body, p, etc.) ----- //
 @import "core/base";
+@import "libs/grid";
 
 // Typography - Fonts and Colors ----- //
 @import "core/typography";

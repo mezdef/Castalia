@@ -11,7 +11,7 @@ background: transparent;
 a:hover,
 a:focus {
   color: #D37982;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 a:focus {
@@ -462,40 +462,26 @@ font-weight: bold;
 color: #43566B;
 }
 
+// SELECT //////////////////////////////////////////////////////////////////////////////////////////
+
+select {
+  -webkit-appearance: menulist;
+  box-sizing: border-box;
+  align-items: center;
+  border: 1px solid;
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+  white-space: pre;
+  -webkit-rtl-ordering: logical;
+  color: black;
+  background-color: white;
+  cursor: default;
+}
+
 // FORMS ///////////////////////////////////////////////////////////////////////////////////////////
-
-.form-signin {
-max-width: 330px;
-padding: 15px;
-margin: 0 auto;
-}
-
-.form-signin input[type="text"], .form-signin input[type="email"] {
-margin-bottom: -1px;
-border-bottom-left-radius: 0;
-border-bottom-right-radius: 0;
-}
-
-.form-signin input[type="password"] {
-margin-bottom: 10px;
-border-top-left-radius: 0;
-border-top-right-radius: 0;
-}
-
-.form-signin input[type="text"] {
-margin-bottom: -1px;
-border-bottom-left-radius: 0;
-border-bottom-right-radius: 0;
-}
-.form-signin .form-control {
-position: relative;
-font-size: 16px;
-height: auto;
-padding: 10px;
--webkit-box-sizing: border-box;
--moz-box-sizing: border-box;
-box-sizing: border-box;
-}
 
 
 .form-group {
