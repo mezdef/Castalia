@@ -1,4 +1,28 @@
 %article
+  %h2 Created Events
+  %table.table.table-condensed
+    %thead
+      %tr
+        %th.name Event
+        %th.type Type
+        %th.start Start
+        %th.length Days
+        %th.guests Guests
+        %th.action Actions
+    %tbody
+      - @events.where(:owner => current_user).each do |event|
+        %tr
+          %td.name{title: event.id}= event.name
+          %td.type{title: event.type}= event.type
+          %td.start{title: event.start}= event.start.strftime("%Y-%m-%d")
+          %td.length{title: 'Days'}= event.length
+          %td.guests{title: event.users}
+            - event.users.each do |user|
+              = link_to user.sig, user
+          %td.action
+            = link_to "", event_path(event_id: event), class: "glyphicon glyphicon-trash", method: 'delete', data: {confirm: 'Are you sure you want to delete this file?'}
+
+%article
   %h2 Events
   %table.table.table-condensed
     %thead
@@ -17,7 +41,11 @@
           %td.start{title: event.start}= event.start.strftime("%Y-%m-%d")
           %td.length{title: 'Days'}= event.length
           %td.guests{title: event.users}
-            - event.users.each do |user|
-              = link_to user.sig, user
+            - event.users.each_with_index do |user, index|
+              - if index == 0
+                %span= link_to user.sig, user
+              - else
+                , 
+                = link_to user.sig, user
           %td.action
             = link_to "", event_path(event_id: event), class: "glyphicon glyphicon-trash", method: 'delete', data: {confirm: 'Are you sure you want to delete this file?'}
