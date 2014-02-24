@@ -16,7 +16,7 @@ class Event < ActiveRecord::Base
   end
 
   def length
-    ((((finish_date - start_date)/60)/60)/24).to_i
+    ((((finish_date.to_datetime - start_date.to_datetime)/60)/60)/24).to_i
   end
 
 end

@@ -34,9 +34,8 @@
         %tr
           %td.name{title: event.id}= event.name
           %td.type{title: event.type}= event.type
-          / %td.start{title: event.start}= event.start.strftime("%Y-%m-%d")
           %td.start{title: event.start}= event.start
-          / # %td.length{title: 'Days'}= event.length
+          %td.length{title: 'Days'}= event.length
           %td.guests{title: event.users}
             - event.users.each do |user|
               = link_to user.sig, user
@@ -59,8 +58,8 @@
         %tr
           %td.name{title: event.id}= event.name
           %td.type{title: event.type}= event.type
-          %td.start{title: event.start}= event.start.strftime("%Y-%m-%d")
-          / # %td.length{title: 'Days'}= event.length
+          %td.start{title: event.start}= event.start
+          %td.length{title: 'Days'}= event.length
           %td.guests{title: event.users}
             - event.users.each_with_index do |user, index|
               - if index == 0
