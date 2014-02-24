@@ -18,7 +18,7 @@ class Calendar < Struct.new(:view, :date, :callback)
  
     def week_rows
       weeks.map do |week|
-        content_tag :tr do
+        content_tag :tr, class: 'week' do
           week.map { |day| day_cell(day) }.join.html_safe
         end
       end.join.html_safe

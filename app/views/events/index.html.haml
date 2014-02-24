@@ -1,24 +1,21 @@
 %article
-  .row
-    .col-md-12.text-center
-      .well.controls
-        = link_to event_path(date: @date - 1.month), class: 'btn btn-default' do
-          %i.glyphicon.glyphicon-backward
-        = "#{@date.strftime("%B")} #{@date.year}"
-        = link_to event_path(date: @date + 1.month), class: 'btn btn-default' do
-          %i.glyphicon.glyphicon-forward
-  .row
-    .col-md-12
-      = calendar @date do |date|
-        %span.date= date.day
-        %ul
-          - @events.where("start_date <= ? AND finish_date >=?", date, date).each_with_index do |event, index|
-            - if event.start_date == date
-              %li{class: "start", "event-id" => event.id.to_s, "stack-level" => index.to_i.to_s}= link_to event.name, event, class: 'label label-default'
-            - elsif event.finish_date == date
-              %li{class: "finish", "event-id" => event.id.to_s,  "stack-level" => index.to_i.to_s}= link_to event.name, event, class: 'label label-default'
-            - else
-              %li{"event-id" => event.id.to_s, "stack-level" => index.to_i.to_s}= link_to event.name, event, class: 'label label-default'
+  .text-center
+    .well.controls
+      = link_to event_path(date: @date - 1.month), class: 'btn btn-default' do
+        %i.glyphicon.glyphicon-backward
+      = "#{@date.strftime("%B")} #{@date.year}"
+      = link_to event_path(date: @date + 1.month), class: 'btn btn-default' do
+        %i.glyphicon.glyphicon-forward
+  = calendar @date do |date|
+    %span.date= date.day
+    %ul.clearfix
+      - @events.where("start_date <= ? AND finish_date >=?", date, date).each_with_index do |event, index|
+        - if event.start_date == date
+          %li{class: "start", "event-id" => event.id.to_s, "stack-level" => index.to_i.to_s}= link_to event.name, event, class: 'label label-default'
+        - elsif event.finish_date == date
+          %li{class: "finish", "event-id" => event.id.to_s,  "stack-level" => index.to_i.to_s}= link_to '&nbsp;'.html_safe, event, class: 'label label-default'
+        - else
+          %li{"event-id" => event.id.to_s, "stack-level" => index.to_i.to_s}= link_to '&nbsp;'.html_safe, event, class: 'label label-default'
 
 
 %article
@@ -37,8 +34,9 @@
         %tr
           %td.name{title: event.id}= event.name
           %td.type{title: event.type}= event.type
-          %td.start{title: event.start}= event.start.strftime("%Y-%m-%d")
-          %td.length{title: 'Days'}= event.length
+          / %td.start{title: event.start}= event.start.strftime("%Y-%m-%d")
+          %td.start{title: event.start}= event.start
+          / # %td.length{title: 'Days'}= event.length
           %td.guests{title: event.users}
             - event.users.each do |user|
               = link_to user.sig, user
@@ -62,7 +60,7 @@
           %td.name{title: event.id}= event.name
           %td.type{title: event.type}= event.type
           %td.start{title: event.start}= event.start.strftime("%Y-%m-%d")
-          %td.length{title: 'Days'}= event.length
+          / # %td.length{title: 'Days'}= event.length
           %td.guests{title: event.users}
             - event.users.each_with_index do |user, index|
               - if index == 0

@@ -1,3 +1,4 @@
+@import "../core/variables"
 table.calendar
   tbody
     tr
@@ -13,9 +14,30 @@ table.calendar
         li
           position: absolute
           margin-bottom: 1px
+          width: 100%
+          &.ev_0 a
+            background-color: $color-rnbw-0
+          &.ev_1 a
+            background-color: $color-rnbw-1
+          &.ev_2 a
+            background-color: $color-rnbw-2
+          &.ev_3 a
+            background-color: $color-rnbw-3
+
           a
             display: block
+            border-radius: 0
+          &.start
+            a
+              border-radius: 3px 0 0 3px
+          &.finish
+            a
+              border-radius: 0 3px 3px 0
+
 
 @for $is from 0 through 10
   .ev_#{$is}
     margin-top: 20px * $is
+  .week.events#{$is}
+    td
+      height: 40px * $is
