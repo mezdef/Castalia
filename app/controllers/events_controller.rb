@@ -1,9 +1,11 @@
 class EventsController < ApplicationController
 
-  load_and_authorize_resource
+  # load_and_authorize_resource
 
   def index
     @events = Event.all
+    @date = params[:date] ? Date.parse(params[:date]) : Date.today
+    @events_by_date = Event.group(:start_date)
   end
 
   def new
@@ -35,7 +37,7 @@ class EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:event).permit(:name, :type, :start, :finish)
+    params.require(:event).permit(:name, :type, :start_date, :finish_date)
   end
 
 end

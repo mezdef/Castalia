@@ -13,12 +13,12 @@
       = collection_select :user, :member_id, User.all, :id, :name, {prompt: 'Add Users to event'}, {class: 'form-control'}
 
     .form-group
-      = f.label :start, class: ''
-      = f.date_select :start, {}, {class: 'form-control col-xs-4'}
+      = f.label :start_date, class: ''
+      = f.date_select :start_date, {}, {class: 'form-control col-xs-4'}
 
     .form-group
-      = f.label :finish
-      = f.date_select :finish, {}, {class: 'form-control col-xs-4'}
+      = f.label :finish_date
+      = f.date_select :finish_date, {}, {class: 'form-control col-xs-4'}
 
     .form-group
       = f.submit "Create Event", class: 'btn btn-block btn-lg btn-primary'

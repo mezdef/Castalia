@@ -7,8 +7,16 @@ class Event < ActiveRecord::Base
     event_type
   end
 
+  def start
+    start_date
+  end
+
+  def finish
+    finish_date
+  end
+
   def length
-    ((((finish - start)/60)/60)/24).to_i
+    ((((finish_date - start_date)/60)/60)/24).to_i
   end
 
 end

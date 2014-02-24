@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140123062944) do
+ActiveRecord::Schema.define(version: 20140222115854) do
 
   create_table "assets", force: true do |t|
     t.string   "asset_file_name"
@@ -25,11 +25,11 @@ ActiveRecord::Schema.define(version: 20140123062944) do
   end
 
   create_table "events", force: true do |t|
-    t.string   "name"
-    t.string   "event_type", default: "Booking"
-    t.datetime "start"
-    t.datetime "finish"
-    t.integer  "owner_id"
+    t.string  "name"
+    t.string  "event_type",  default: "Booking"
+    t.date    "start_date"
+    t.date    "finish_date"
+    t.integer "owner_id"
   end
 
   create_table "events_users", force: true do |t|

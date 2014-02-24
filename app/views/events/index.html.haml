@@ -1,4 +1,27 @@
 %article
+  .row
+    .col-md-12.text-center
+      .well.controls
+        = link_to event_path(date: @date - 1.month), class: 'btn btn-default' do
+          %i.glyphicon.glyphicon-backward
+        = "#{@date.strftime("%B")} #{@date.year}"
+        = link_to event_path(date: @date + 1.month), class: 'btn btn-default' do
+          %i.glyphicon.glyphicon-forward
+  .row
+    .col-md-12
+      = calendar @date do |date|
+        %span.date= date.day
+        %ul
+          - @events.where("start_date <= ? AND finish_date >=?", date, date).each_with_index do |event, index|
+            - if event.start_date == date
+              %li{class: "start", "event-id" => event.id.to_s, "stack-level" => index.to_i.to_s}= link_to event.name, event, class: 'label label-default'
+            - elsif event.finish_date == date
+              %li{class: "finish", "event-id" => event.id.to_s,  "stack-level" => index.to_i.to_s}= link_to event.name, event, class: 'label label-default'
+            - else
+              %li{"event-id" => event.id.to_s, "stack-level" => index.to_i.to_s}= link_to event.name, event, class: 'label label-default'
+
+
+%article
   %h2 Created Events
   %table.table.table-condensed
     %thead

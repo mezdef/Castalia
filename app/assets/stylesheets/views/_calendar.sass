@@ -1,0 +1,21 @@
+table.calendar
+  tbody
+    tr
+      td
+        position: relative
+        padding: 8px 0
+        .date
+          padding: 0 8px
+      ul
+        margin: 0
+        padding: 5px 0
+        list-style-type: none
+        li
+          position: absolute
+          margin-bottom: 1px
+          a
+            display: block
+
+@for $is from 0 through 10
+  .ev_#{$is}
+    margin-top: 20px * $is
