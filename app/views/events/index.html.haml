@@ -11,11 +11,11 @@
     %ul.clearfix
       - @events.where("start_date <= ? AND finish_date >=?", date, date).each_with_index do |event, index|
         - if event.start_date == date
-          %li{class: "start", "event-id" => event.id.to_s, "stack-level" => index.to_i.to_s}= link_to event.name, event, class: 'label label-default'
+          %li{class: "start", "event-id" => event.id.to_s}= link_to event.name, event, class: 'label label-default'
         - elsif event.finish_date == date
-          %li{class: "finish", "event-id" => event.id.to_s,  "stack-level" => index.to_i.to_s}= link_to '&nbsp;'.html_safe, event, class: 'label label-default'
+          %li{class: "finish", "event-id" => event.id.to_s}= link_to '&nbsp;'.html_safe, event, class: 'label label-default'
         - else
-          %li{"event-id" => event.id.to_s, "stack-level" => index.to_i.to_s}= link_to '&nbsp;'.html_safe, event, class: 'label label-default'
+          %li{class: "middle", "event-id" => event.id.to_s}= link_to '&nbsp;'.html_safe, event, class: 'label label-default'
 
 
 %article

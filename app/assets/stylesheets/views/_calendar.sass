@@ -15,14 +15,20 @@ table.calendar
           position: absolute
           margin-bottom: 1px
           width: 100%
-          &.ev_0 a
+          &[stack-level="0"] a
             background-color: $color-rnbw-0
-          &.ev_1 a
+          &[stack-level="1"] a
             background-color: $color-rnbw-1
-          &.ev_2 a
+          &[stack-level="2"] a
             background-color: $color-rnbw-2
-          &.ev_3 a
+          &[stack-level="3"] a
             background-color: $color-rnbw-3
+          &[stack-level="4"] a
+            background-color: $color-rnbw-4
+          &[stack-level="5"] a
+            background-color: $color-rnbw-5
+          &[stack-level="6"] a
+            background-color: $color-rnbw-6
 
           a
             display: block
@@ -36,8 +42,9 @@ table.calendar
 
 
 @for $is from 0 through 10
-  .ev_#{$is}
+  $stacklevel : "li[stack-level='" + $is + "']"
+  $weeks : ".week[events='" + $is + "']"
+  #{$stacklevel}
     margin-top: 20px * $is
-  .week.events#{$is}
-    td
-      height: 40px * $is
+  #{$weeks}
+    height: 40px + (20px * $is)
