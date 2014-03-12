@@ -9,17 +9,22 @@ class EventsController < ApplicationController
   end
 
   def new
+    @event = Event.new
   end
 
   def create
-    event = Event.new(event_params)
-    users = User.find(params[:user][:member_id])
-    event.owner = current_user
-    event.users << users && event.users << current_user
-    if event.save
-      redirect_to event_path, notice: "Successfully created #{event.name}"
+    @event = Event.new(event_params)
+    if params[:user]
+      @users = User.find(params[:user][:member_id])
+      @event.users << @users
+    end
+    @event.users << current_user
+    @event.owner = current_user
+
+    if @event.save
+      redirect_to event_path, notice: "Successfully created #{@event.name}"
     else
-      redirect_to event_path warning: "Failed to create event."
+      render 'new'
     end
   end
 
@@ -37,7 +42,7 @@ class EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:event).permit(:name, :type, :start_date, :finish_date)
+    params.require(:event).permit(:name, :type, :start_date, :finish_date, :user)
   end
 
 end

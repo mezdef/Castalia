@@ -13,5 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require calendar
+//= require select2
 //= require mercury
+//= require _event

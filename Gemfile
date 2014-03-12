@@ -26,6 +26,7 @@ group :test do
 end
 
 gem 'simple_form'
+gem 'select2-rails'
 
 gem 'devise'
 gem 'cancan'

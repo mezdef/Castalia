@@ -1,16 +1,17 @@
 %article
-  = form_for :event, url: event_path, html: {:class => "form-signin"} do |f|
+  = form_for @event, url: event_path, html: {:class => "form-signin"} do |f|
 
     %h2 New Event
-    = devise_error_messages!
+
+    = render "shared/error_messages", :target => @event
 
     .form-group
       = f.label :name
       = f.text_field :name, class: 'form-control', :placeholder => "Event name", :autofocus => true
 
     .form-group
-      = f.label :users
-      = collection_select :user, :member_id, User.all, :id, :name, {prompt: 'Add Users to event'}, {class: 'form-control'}
+      = f.label :users, "Guests"
+      = collection_select :user, :member_id, User.all, :id, :name, {include_hidden: false, include_blank: true}, {id: 'select2-users', class: 'form-control', "multiple" => '', placeholder: 'Add users to the event'}
 
     .form-group
       = f.label :start_date, class: ''
