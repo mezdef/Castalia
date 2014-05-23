@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    @user = User.new(params[:user])
   end
 
   def create
@@ -30,7 +31,7 @@ class UsersController < ApplicationController
       # UserMailer.account_requested(@user).deliver
       redirect_to @user, :flash => { :success => 'User was successfully created.' }
     else
-      render :action => 'new'
+      render 'new'
     end
   end
 

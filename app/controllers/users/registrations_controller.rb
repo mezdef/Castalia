@@ -1,30 +1,32 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 
   def new
-    super
+    # super
+    @user = User.new(params[:user])
   end
 
-  # def edit
-  #   @user = User.find(params[:id])
-  #   super
-  # end
+  def create
+    @user = User.new(params[:registration_params])
+    @user.add_role(:user)
 
-  # def update
-  #   super
-  #   # if params[:user][:password].blank?
-  #   #   params[:user].delete(:password)
-  #   #   params[:user].delete(:password_confirmation)
-  #   # end
-  #   @user = User.find(params[:id])
-  #   params[:user].delete(:password) if params[:user][:password].blank?
-  #   params[:user].delete(:password_confirmation) if params[:user][:password].blank? and params[:user][:password_confirmation].blank?
-  #   if @user.update_attributes(params.require(:user).permit(:first_name, :last_name, :roles, :role_ids, :password, :password_confirmation))
-  #     flash[:notice] = "Successfully updated User."
-  #     redirect_to root_path
+    if @user.save
+      # UserMailer.account_requested(@user).deliver
+      redirect_to @user, :flash => { :success => 'User was successfully created.' }
+    else
+      render 'new'
+    end
+  end
+
+
+  private
+  def registration_params
+    params.require(:user).permit(:email, :password, :password_confirmation)
+  end
+  #   if can? :manage, User
+  #     # params[:user]
+  #     params.require(:user).permit(:email, :first_name, :last_name, :contact, :status, :role, {:role_ids => []}, :password, :password_confirmation )
   #   else
-  #     render :action => 'edit'
   #   end
   # end
-
 
 end 
